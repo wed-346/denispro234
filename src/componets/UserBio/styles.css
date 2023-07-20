@@ -1,0 +1,39 @@
+.cnUserBioRoot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cnUserBioImg {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	margin-right: 35px;
+}
+
+.cnUserBioinfo {
+	display: flex;
+	flex-direction: column;
+}
+
+.cnUserBioContainerInfo {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.cnUserBionicname {
+	font-weight: 600;
+	font-size: 27px;
+	margin-right: 10px;
+}
+
+.cnIserBioCounterPublicution {
+	margin-right: 10px;
+
+}
+
+.cnUserBioNamefirstlast {
+	font-weight: 600;
+
+}
