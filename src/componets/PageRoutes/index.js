@@ -9,43 +9,43 @@ import { Bars } from "react-loader-spinner";
 import './styles.css';
 
 const authorizedRoutes = [
-    { path: '/', element: <MainPage />, exact: true },
-    { path: '/:id', element: <UserPage />, exact: true, },
+	{ path: '/', element: <MainPage />, exact: true },
+	{ path: '/:id', element: <UserPage />, exact: true },
 ];
 
 const PageRoutes = () => {
-    const authorizedUser = useSelector(state => state.users.authorizedUser);
-    const isLoading = useSelector(state => state.users.isUserLoading);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getAuthorizedUser());
-        // eslint-disable-next-line
-    }, []);
+	const authorizedUser = useSelector(state => state.users.authorizedUser);
+	const isLoading = useSelector(state => state.users.isUserLoadingauthorizedUser);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getAuthorizedUser());
+		// eslint-disable-next-line
+	}, []);
 
-    if (isLoading) {
-        return (
-            <div className="cnPageRoutesMage">
-            <Bars color="000BFF" width={80} height={80} />
-            </div>
-        )
-
-
-
-    }
-
-    return (
+	if (isLoading) {
+		return (
+			<div className="cnPageRoutesMage">
+				<Bars color="000BFF" width={80} height={80} />
+			</div>
+		)
 
 
-        <BrowserRouter>
-            <Routes>
 
-               {  authorizedUser ? authorizedRoutes.map((route) => <Route {...route} key={route.path} />) : <Route path="/" element={<NoAccesPage/>} exact/>}
+	}
 
-            </Routes>
+	return (
 
-        </BrowserRouter>
 
-    )
+		<BrowserRouter>
+			<Routes>
+
+				{authorizedUser ? authorizedRoutes.map((route) => <Route {...route} key={route.path} />) : <Route path="/" element={<NoAccesPage />} exact />}
+
+			</Routes>
+
+		</BrowserRouter>
+
+	)
 };
 
 

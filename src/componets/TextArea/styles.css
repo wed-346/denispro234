@@ -1,0 +1,18 @@
+.cnRoot {
+	border: none;
+	background-color: #fff;
+	padding: 10px;
+	outline: none;
+	resize: none;
+	width: 80%;
+ }
+.cnContainerTextArea {
+	position: relative;	
+   background: #fff;
+}
+.cnrootButton {	
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+
+}

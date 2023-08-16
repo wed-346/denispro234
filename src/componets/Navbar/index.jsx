@@ -1,21 +1,21 @@
 import UserBage from '../UserBadge';
 import './styles.css';
 const Navbar = ({
-    nickName,
-    avatarUrl,
-    id,
+	nickName,
+	avatarUrl,
+	id,
 }) => {
-    return (
-        <div className="cnNavbarrott">
+	return (
+		<div className="cnNavbarrott">
 
-            <div className="cnnavbarwrapper">
-            <span>KIBZUNARIA</span>
-           <UserBage  nickName={nickName} avatarUrl={avatarUrl} id={id} />
+			<div className="cnnavbarwrapper">
+				<a href="/" className="cnNavbarButton">KIBZUNARIA</a>
+				<UserBage nickName={nickName} avatarUrl={avatarUrl} id={id} />
 
-            </div>
-          
-        </div>
+			</div>
 
-    );
+		</div>
+
+	);
 };
 export default Navbar;

@@ -41,39 +41,36 @@ const MainPage = () => {
 
 		<Layout nickName={authorizedUser.nickname} id={authorizedUser.id} avatarUrl={authorizedUser.avatarUrl}>
 			<div className="cnMainPageRottBackendd">
-				{loading ? (<div className="cnMainLOaderContainer">
-					<Bars color="#000BFF" height={80} width={80} />
-				</div>) :
-					<InfiniteScroll
-						dataLength={photos.length}
-						next={nextHandler}
-						hasMore={photos.length < total}
-						loader={
-							<div className="cnMainLOaderContainer">
-								<Bars color="#000BFF" height={15} width={15} />
-							</div>}
-						endMessage={
-							<p className="cnMainLOaderContainer">Thats all!</p>
-						}
-					>
-						{photos.map(({ author, imgUrl, id, likes, comments }) => (
-							<DetalidCard
-								key={id}
-								id={id}
-								userName={author.nickname}
-								userId={author.id}
-								avatarUrl={author.avatarUrl}
-								imgUrl={imgUrl}
-								likes={likes.length}
-								isLikedByYou={likes.includes(authorizedUser.id)}
-								comments={comments}
-								className="cnMainPageCardBody"
-								onLikeClick={onLikeClick}
-								onCommentSendClick={onCommentSendClick}
-								muateLoading={muateLoading}
-							/>
-						))}
-					</InfiniteScroll>}
+				<InfiniteScroll
+					dataLength={photos.length}
+					next={nextHandler}
+					hasMore={photos.length < total}
+					loader={
+						<div className="cnMainLOaderContainer">
+							<Bars color="#000BFF" height={15} width={15} />
+						</div>}
+					endMessage={
+						<p className="cnMainLOaderContainer">Thats all!</p>
+					}
+				>
+					{photos.map(({ author, imgUrl, id, likes, comments }) => (
+						<DetalidCard
+							key={id}
+							id={id}
+							userName={author.nickname}
+							userId={author.id}
+							avatarUrl={author.avatarUrl}
+							imgUrl={imgUrl}
+							likes={likes.length}
+							isLikedByYou={likes.includes(authorizedUser.id)}
+							comments={comments}
+							className="cnMainPageCardBody"
+							onLikeClick={onLikeClick}
+							onCommentSendClick={onCommentSendClick}
+							muateLoading={muateLoading}
+						/>
+					))}
+				</InfiniteScroll>
 			</div>
 
 

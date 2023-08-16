@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import cn from 'classnames';
 import { nanoid } from 'nanoid';
+import TextArea from '../TextArea';
+import PhotoModal from '../PhotoModal';
 import UserBage from '../UserBadge';
 import Comment from '../comment';
 
@@ -19,10 +21,12 @@ const DetalidCard = ({
 	onCommentSendClick,
 	muateLoading,
 
+
 }) => {
 	const [isCommentShown, setIsCommentsShow] = useState(false);
 	const [comment, setComment] = useState('');
 
+	const [isModalVisible, setIssMobalVisible] = useState(false);
 	const handleSendCommentClick = () => {
 		if (comment) {
 			onCommentSendClick(id, comment);
@@ -43,7 +47,19 @@ const DetalidCard = ({
 		}
 		return comments.map((comment) => <Comment {...comment} key={nanoid()} />)
 
-	}
+	};
+	const onCloseModal = () => {
+		setComment('');
+		setIssMobalVisible(false);
+
+	};
+	const onOpenModal = () => {
+		setComment('');
+		setIssMobalVisible(true);
+
+	};
+
+
 	return (
 		<div className={cn("cnCardRootD", className)}>
 			<div className="cnCardDetaliedBody">
@@ -54,7 +70,7 @@ const DetalidCard = ({
 			</div>
 			<div className="cnDetaliedButton">
 				<i onClick={() => onLikeClick(id)} className={`${isLikedByYou ? 'fas' : 'far'} fa-heart cnDetaliedLikeIcon `} />
-				<i className="fas fa-comment CnDetaliedCardComment" />
+				<i className="fas fa-comment CnDetaliedCardComment" onClick={onOpenModal} />
 			</div>
 			<div className="Likecnn">
 				{`Оценили ${likes} человек`}
@@ -64,18 +80,38 @@ const DetalidCard = ({
 
 
 			</div>
-			<div className="cnCommenttypeandbuttin">
-				<textarea
-					value={comment}
-					onChange={e => setComment(e.target.value)}
-					placeholder='Ведите коментарий'
-					className="CndetaliedCardYexyYerarea"
-				/>
-				<button disabled={muateLoading} className="cnDetakiedCardButoonI" onClick={handleSendCommentClick}>Отправить</button>
+			<TextArea
+				value={comment}
+				onChange={setComment}
+				placeholder='Ведите коментарий'
+				isLoading={muateLoading}
+				onSumbit={handleSendCommentClick}
+				buttonText="Отправить"
 
-			</div>
+			/>
+
+			<PhotoModal
+				comments={comments}
+				isOpen={isModalVisible}
+				onClose={onCloseModal}
+				userName={userName}
+				avatarUrl={avatarUrl}
+				userId={userId}
+				commentValue={comment}
+				setCommentValue={setComment}
+				onCommentSumbit={handleSendCommentClick}
+				isCommentLoading={muateLoading}
+				imgUrl={imgUrl}
+				isLikedByYou={isLikedByYou}
+				onLikeClick={() => onLikeClick(id)}
+
+
+			/>
+
+
+
 		</div>
 
-	)
+	);
 };
 export default DetalidCard;

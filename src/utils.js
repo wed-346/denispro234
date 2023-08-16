@@ -1,12 +1,23 @@
 export const getPhotoFromRedux = (photos, photoId) => {
-    const photo = photos.find((elem) => elem.id === photoId);
+	const photo = photos.find((elem) => elem.id === photoId);
 
-    return {...photo };
+	return { ...photo };
 };
 
 export const getUpdatePhotoForState = (photos, photoId, data) => {
-    const newPhotos = [...photos];
-    const photosIndex = newPhotos.findIndex(photo => photo.id === photoId);
-    newPhotos[photosIndex] = data;
-    return newPhotos;
+	const newPhotos = [...photos];
+	const photosIndex = newPhotos.findIndex(photo => photo.id === photoId);
+	newPhotos[photosIndex] = data;
+	return newPhotos;
+};
+
+export const getUserPagePosts = (posts, postId) => {
+	const newPosts = [...posts];
+	const newPostsIndex = newPosts.findIndex(post => post.id === postId);
+	const postForEdit = newPosts[newPostsIndex];
+	return {
+		newPosts,
+
+		postForEdit,
+	};
 };

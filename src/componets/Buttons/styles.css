@@ -1,0 +1,18 @@
+.cnButoon {	
+	
+	padding: 5px;
+	background: #2196F3;
+	color: #fff;
+   border: none;
+	border-radius: 5px;
+   cursor: pointer;
+}
+
+.cnButoon:active {	
+	background: #1976D2;
+   
+}
+.cnButoon:disabled {	
+	background: #E3F2FD;
+   
+}

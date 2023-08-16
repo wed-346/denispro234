@@ -12,3 +12,8 @@
     max-width: 1080px;
     margin: auto;
 }
+.cnNavbarButton {
+	text-decoration: none;
+	color: #000;
+
+}

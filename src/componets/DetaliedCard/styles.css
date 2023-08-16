@@ -31,14 +31,7 @@
   flex-direction: column;
   padding: 0 10px 10px 10px;
 }
-.CndetaliedCardYexyYerarea {
-  border: none;
-  background-color: #fff;
-  padding: 10px;
-  outline: none;
-  resize: none;
-  width: 80%;
-}
+
 .cnDetaliedLikeIcon {
   margin-right: 10px;
   cursor: pointer;
@@ -51,27 +44,4 @@
   color: #dbdbdb;
   cursor: pointer;
 }
-.cnCommenttypeandbuttin {
-	position: relative;	
-   background: #fff;
-}
-.cnDetakiedCardButoonI {	
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
-	padding: 5px;
-	background: #2196F3;
-	color: #fff;
-   border: none;
-	border-radius: 5px;
-   cursor: pointer;
-}
 
-.cnDetakiedCardButoonI:active {	
-	background: #1976D2;
-   
-}
-.cnDetakiedCardButoonI:disabled {	
-	background: #E3F2FD;
-   
-}
