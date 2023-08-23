@@ -16,7 +16,9 @@
 .cnCardIMG {
   height: 300px;
   width: 100%;
+  
 }
+
 .cnDetaliedButton {
   display: flex;
   padding: 10px;
@@ -44,4 +46,5 @@
   color: #dbdbdb;
   cursor: pointer;
 }
+
 

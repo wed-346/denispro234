@@ -11,7 +11,8 @@ import { Bars } from "react-loader-spinner";
 
 const MainPage = () => {
 	const photos = useSelector(state => state.photos.photos);
-	const loading = useSelector(state => state.photos.isPhotosLoading);
+	const isLoading = useSelector(state => state.photos.isPhotosLoading);
+	const isError = useSelector(state => state.photos.isPhotoError);
 	const authorizedUser = useSelector(state => state.users.authorizedUser)
 	const total = useSelector(state => state.photos.totalPhotos);
 	const dispatch = useDispatch();
@@ -41,7 +42,8 @@ const MainPage = () => {
 
 		<Layout nickName={authorizedUser.nickname} id={authorizedUser.id} avatarUrl={authorizedUser.avatarUrl}>
 			<div className="cnMainPageRottBackendd">
-				<InfiniteScroll
+				{isLoading && <Bars color="#000BFF" height={15} width={15} />}
+				{!isError && !isLoading && <InfiniteScroll
 					dataLength={photos.length}
 					next={nextHandler}
 					hasMore={photos.length < total}
@@ -70,13 +72,13 @@ const MainPage = () => {
 							muateLoading={muateLoading}
 						/>
 					))}
-				</InfiniteScroll>
+				</InfiniteScroll>}
 			</div>
 
 
 
 
-		</Layout>
+		</Layout >
 
 	);
 };

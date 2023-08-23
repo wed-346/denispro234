@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 export const getPhotoFromRedux = (photos, photoId) => {
 	const photo = photos.find((elem) => elem.id === photoId);
 
@@ -20,4 +21,11 @@ export const getUserPagePosts = (posts, postId) => {
 
 		postForEdit,
 	};
+};
+
+export const getEroor = ({ response: { status, statusText } }) => {
+
+
+	toast.error(`${status}: ${statusText} `);
+
 };

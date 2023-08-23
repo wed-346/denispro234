@@ -16,6 +16,7 @@ const authorizedRoutes = [
 const PageRoutes = () => {
 	const authorizedUser = useSelector(state => state.users.authorizedUser);
 	const isLoading = useSelector(state => state.users.isUserLoadingauthorizedUser);
+
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getAuthorizedUser());
@@ -39,7 +40,7 @@ const PageRoutes = () => {
 		<BrowserRouter>
 			<Routes>
 
-				{authorizedUser ? authorizedRoutes.map((route) => <Route {...route} key={route.path} />) : <Route path="/" element={<NoAccesPage />} exact />}
+				{authorizedUser ? authorizedRoutes.map((route) => <Route {...route} key={route.path} />) : <Route path="*" element={<NoAccesPage />} exact />}
 
 			</Routes>
 

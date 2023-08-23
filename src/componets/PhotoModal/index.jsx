@@ -5,6 +5,7 @@ import Comment from '../comment';
 import { nanoid } from 'nanoid';
 import TextArea from '../TextArea';
 import './styles.css';
+import ImagewithLoader from '../ImageWithLoader';
 
 const PhotoModal = ({
 	isCommentLoading,
@@ -47,7 +48,8 @@ const PhotoModal = ({
 
 			<div className="cnPhotoModalRoot">
 				<div className="cnModalPhotowrapper">
-					<img src={imgUrl} alt={imgUrl} className="cnModalImg" />
+					<ImagewithLoader src={imgUrl} alt={imgUrl} className="cnModalImg" />
+
 				</div>
 				<div className="cnModalCommentsBlock">
 					<div>

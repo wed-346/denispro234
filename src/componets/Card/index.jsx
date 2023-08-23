@@ -1,8 +1,9 @@
 
 import { useState } from 'react';
 import PhotoModal from '../PhotoModal';
-import './styles.css';
 import cn from 'classnames';
+import ImagewithLoader from '../ImageWithLoader';
+import './styles.css';
 
 
 const CardPhotoBlock = ({ isMutateCommentLoading, imgUrl, className, likes, comments, isLikedByYou, onCommentSumbit, onLikeClick, id, userData, onCommentClick }) => {
@@ -10,9 +11,11 @@ const CardPhotoBlock = ({ isMutateCommentLoading, imgUrl, className, likes, comm
 	const [comment, setComment] = useState('');
 
 
+
 	return (
 		<div className={cn("cnCardRoot", className)}>
-			<img src={imgUrl} alt={imgUrl} className="cnCradPhotoimg" />
+			<ImagewithLoader className="cnCradPhotoimg" src={imgUrl} alt={imgUrl} />
+
 			<div className="cnCardHover" />
 			<div className="cnCardIconRoot">
 				<i className={cn(`${isLikedByYou ? 'fa' : 'far'} fa-heart`, "cnCardIconNumberfarfas")} onClick={onLikeClick} />

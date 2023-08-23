@@ -19,8 +19,10 @@ const UserPage = () => {
 	const authorizedUser = useSelector(state => state.users.authorizedUser);
 	const user = useSelector(state => state.users.user);
 	const posts = useSelector(state => state.postsByUser.posts)
+	const isPostsError = useSelector(state => state.postsByUser.isPostsError)
 	const isPostsLoading = useSelector(state => state.postsByUser.isPostsLoading);
 	const isUserLoading = useSelector(state => state.users.isUserLoading);
+	const isUserError = useSelector(state => state.users.isUserError);
 	const muateLoading = useSelector(state => state.photos.isMutateLoading);
 	const dispatch = useDispatch();
 
@@ -75,7 +77,7 @@ const UserPage = () => {
 			{isPostsLoading || isUserLoading ? <div className="cnMainLOaderContainer">
 				<Bars color="#000BFF" height={80} width={80} />
 			</div> : <div className="cnUserPageContainer">
-				<UserBio
+				{!isUserError && <UserBio
 					avatarUrl={user.avatarUrl}
 					nickname={user.nickname}
 					subscribed={user.subscribers.length}
@@ -87,9 +89,10 @@ const UserPage = () => {
 					isMyPage={id == authorizedUser.id}
 					isSubscribed={user.subscribers.includes(authorizedUser.id)}
 
-				/>
+				/>}
 
 				<div className="cnUserPageCardPhotoRoot">
+
 					{postsForRender.length ? <InfiniteScroll
 						dataLength={postsForRender.length}
 						next={nextHandler}
@@ -133,7 +136,7 @@ const UserPage = () => {
 
 							/>)}
 
-					</InfiniteScroll> : <p className="cnUserPagenoPosts">User dont have posts</p>}
+					</InfiniteScroll> : !isPostsError && <p className="cnUserPagenoPosts">User dont have posts</p>}
 
 
 

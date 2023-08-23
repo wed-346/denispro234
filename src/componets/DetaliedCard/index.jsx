@@ -5,8 +5,10 @@ import TextArea from '../TextArea';
 import PhotoModal from '../PhotoModal';
 import UserBage from '../UserBadge';
 import Comment from '../comment';
+import ImagewithLoader from '../ImageWithLoader';
 
 import './styles.css';
+
 const DetalidCard = ({
 	userName,
 	avatarUrl,
@@ -27,6 +29,7 @@ const DetalidCard = ({
 	const [comment, setComment] = useState('');
 
 	const [isModalVisible, setIssMobalVisible] = useState(false);
+
 	const handleSendCommentClick = () => {
 		if (comment) {
 			onCommentSendClick(id, comment);
@@ -65,8 +68,9 @@ const DetalidCard = ({
 			<div className="cnCardDetaliedBody">
 				<UserBage nickName={userName} avatarUrl={avatarUrl} id={userId} />
 			</div>
-			<div>
-				<img src={imgUrl} alt="img" className="cnCardIMG" />
+			<div className='cnDetaliedCardContainerLoading'>
+				<ImagewithLoader className="cnCardIMG" src={imgUrl} alt="img" />
+
 			</div>
 			<div className="cnDetaliedButton">
 				<i onClick={() => onLikeClick(id)} className={`${isLikedByYou ? 'fas' : 'far'} fa-heart cnDetaliedLikeIcon `} />
